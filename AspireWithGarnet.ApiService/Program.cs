@@ -7,6 +7,7 @@ builder.AddServiceDefaults();
 
 // Add services to the container.
 builder.Services.AddProblemDetails();
+//Redisクライアントとして出力キャッシュを使用
 builder.AddRedisOutputCache("cache");
 var app = builder.Build();
 
@@ -16,7 +17,7 @@ app.UseExceptionHandler();
 string[] summaries = ["Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"];
 
 app.MapGet("/weatherforecast",
-        [OutputCache(Duration = 60)]
+        [OutputCache(Duration = 60)] //このエンドポイントの出力キャッシュを60秒間有効にする
 () =>
 {
     var forecast = Enumerable.Range(1, 5).Select(index =>
@@ -32,6 +33,7 @@ app.MapGet("/weatherforecast",
 .WithName("GetWeatherForecast");
 
 app.MapDefaultEndpoints();
+//出力キャッシュのミドルウェアを使用
 app.UseOutputCache();
 
 app.Run();

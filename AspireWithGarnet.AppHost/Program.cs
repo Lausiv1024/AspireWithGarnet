@@ -1,5 +1,6 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
+//Garnetのサービスを追加
 var cache = builder.AddGarnet("cache")
     .WithDataVolume(isReadOnly: false);
 
@@ -9,7 +10,7 @@ var apiService = builder.AddProject<Projects.AspireWithGarnet_ApiService>("apise
 builder.AddProject<Projects.AspireWithGarnet_Web>("webfrontend")
     .WithExternalHttpEndpoints()
     .WithReference(apiService)
-    .WithReference(cache)
+    .WithReference(cache)//Garnetの参照をプロジェクトに追加
     .WaitFor(apiService);
 
 builder.Build().Run();
