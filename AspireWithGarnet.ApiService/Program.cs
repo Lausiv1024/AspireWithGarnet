@@ -18,7 +18,6 @@ string[] summaries = ["Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "
 app.MapGet("/weatherforecast",
         [OutputCache(Duration = 60)]
 () =>
-    
 {
     var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
