@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspireWithGarnet.ServiceDefaults\AspireWithGarnet.ServiceDefaults.csproj" />
+    <PackageReference Include="Aspire.StackExchange.Redis" Version="9.1.0" />
+    <PackageReference Include="Aspire.StackExchange.Redis.OutputCaching" Version="9.1.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AspireWithGarnet.ServiceDefaults\AspireWithGarnet.ServiceDefaults.csproj" />
   </ItemGroup>
 
 </Project>

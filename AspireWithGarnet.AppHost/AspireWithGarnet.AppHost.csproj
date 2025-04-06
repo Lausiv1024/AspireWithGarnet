@@ -13,12 +13,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AspireWithGarnet.ApiService\AspireWithGarnet.ApiService.csproj" />
+    <ProjectReference Include="..\AspireWithGarnet.Web.DbInitializer\AspireWithGarnet.Web.DbInitializer.csproj" />
     <ProjectReference Include="..\AspireWithGarnet.Web\AspireWithGarnet.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.AppHost" Version="9.1.0" />
     <PackageReference Include="Aspire.Hosting.Garnet" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.SqlServer" Version="9.1.0" />
   </ItemGroup>
 
 </Project>

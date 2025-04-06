@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireWithGarnet.ApiService
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireWithGarnet.Web", "AspireWithGarnet.Web\AspireWithGarnet.Web.csproj", "{03E1F374-60FE-613E-557D-62B6FA66AC19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireWithGarnet.Web.DbInitializer", "AspireWithGarnet.Web.DbInitializer\AspireWithGarnet.Web.DbInitializer.csproj", "{83967B6B-FEB2-F9EE-85BA-98EABE59F477}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{03E1F374-60FE-613E-557D-62B6FA66AC19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03E1F374-60FE-613E-557D-62B6FA66AC19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03E1F374-60FE-613E-557D-62B6FA66AC19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83967B6B-FEB2-F9EE-85BA-98EABE59F477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83967B6B-FEB2-F9EE-85BA-98EABE59F477}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83967B6B-FEB2-F9EE-85BA-98EABE59F477}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83967B6B-FEB2-F9EE-85BA-98EABE59F477}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

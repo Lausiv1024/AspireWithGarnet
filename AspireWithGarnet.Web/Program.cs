@@ -1,5 +1,7 @@
 using AspireWithGarnet.Web;
 using AspireWithGarnet.Web.Components;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,7 @@ builder.Services.AddRazorComponents()
 
 //builder.Services.AddOutputCache();
 builder.AddRedisOutputCache("cache");
+builder.AddSqlServerDbContext<SampleDbContext>("sampleDb");
 
 builder.Services.AddHttpClient<WeatherApiClient>(client =>
     {
@@ -40,5 +43,22 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
 app.MapDefaultEndpoints();
+app.MapGet("/members",
+    [OutputCache(Duration = 60)]
+(SampleDbContext db) =>
+    {
+        return db.Members.AsAsyncEnumerable();
+    });
+
+app.MapPost("/members",async 
+    ([FromBody]Member member,
+    SampleDbContext sampleDbContext,
+    ILogger<Program> logger) =>
+    {
+        logger.LogInformation("Adding member {member}", member);
+        sampleDbContext.Members.Add(member);
+        await sampleDbContext.SaveChangesAsync();
+        return Results.Created($"/members/{member.Id}", member);
+    });
 
 app.Run();

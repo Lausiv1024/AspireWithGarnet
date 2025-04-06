@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.OutputCaching;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire client integrations.
@@ -5,7 +7,7 @@ builder.AddServiceDefaults();
 
 // Add services to the container.
 builder.Services.AddProblemDetails();
-
+builder.AddRedisOutputCache("cache");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -13,7 +15,10 @@ app.UseExceptionHandler();
 
 string[] summaries = ["Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"];
 
-app.MapGet("/weatherforecast", () =>
+app.MapGet("/weatherforecast",
+        [OutputCache(Duration = 60)]
+() =>
+    
 {
     var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
@@ -28,6 +33,7 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast");
 
 app.MapDefaultEndpoints();
+app.UseOutputCache();
 
 app.Run();
 
